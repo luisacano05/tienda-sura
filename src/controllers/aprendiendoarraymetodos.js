@@ -1,4 +1,3 @@
-//QUEMAR (HARD CORE) LA BD
 let productos=[
 
     {
@@ -81,3 +80,56 @@ let productos=[
         descripcion:"para las manchas"  
     }
 ]
+
+
+let fila=document.getElementById("fila")
+
+//RECORRIENDO EL ARREGLO
+productos.forEach(function(producto){
+
+    //Creando un div en js
+    let columna=document.createElement("div")
+    columna.classList.add("col")
+
+    //creando una tarjeta
+    let tarjeta=document.createElement("dic")
+    tarjeta.classList.add("card","shandow","text-center","h-100","p-5")
+
+    //creando una IMAGEN
+    let imagen=document.createElement("img")
+    imagen.classList.add("img-fluid","w-100")
+    imagen.src=producto.fotos[0]
+
+    //DETECTANDO EVENTO DE MOUSE
+    imagen.addEventListener("mouseover",function(){
+        imagen.src=producto.fotos[1]
+    })
+
+    imagen.addEventListener("mouseleave",function(){
+        imagen.src=producto.fotos[0]
+    })
+
+    //crear el nombre
+    let nombre=document.createElement("h3")
+    nombre.classList.add("fw-bold")
+    nombre.textContent=producto.nombre
+
+    //crear el precio
+    let precio=document.createElement("h2")
+    precio.textContent="$"+producto.precio
+
+    //creando la descripcion
+    let descripcion=document.createElement("p")
+    descripcion.classList.add("text-danger")
+    descripcion.textContent=producto.descripcion
+
+    //definiendo padres e hijos
+    tarjeta.appendChild(imagen)
+    tarjeta.appendChild(nombre)
+    tarjeta.appendChild(precio)
+    tarjeta.appendChild(descripcion)
+    columna.appendChild(tarjeta)
+    fila.appendChild(columna)
+
+
+})
