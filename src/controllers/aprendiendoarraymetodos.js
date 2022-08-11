@@ -92,7 +92,7 @@ productos.forEach(function(producto){
     columna.classList.add("col")
 
     //creando una tarjeta
-    let tarjeta=document.createElement("dic")
+    let tarjeta=document.createElement("div")
     tarjeta.classList.add("card","shandow","text-center","h-100","p-5")
 
     //creando una IMAGEN
