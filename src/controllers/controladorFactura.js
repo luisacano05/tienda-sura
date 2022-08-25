@@ -1,6 +1,5 @@
 let carrito=JSON.parse(localStorage.getItem("carrito"))
 
-//
 let factura=document.getElementById("factura")
 
 //COMPRUEBO EL ESTADO DEL CARRITO DE COMPRAS
@@ -25,25 +24,21 @@ if(carrito==null){
     fila.appendChild(columna)
     factura.appendChild(fila)
 
-
-
-
-
 }else{
-
     //recorro el carrito
     carrito.forEach(function(producto){
         let fila=document.createElement("div")
-        fila.classList.add("row","my-5","justify-content-center")
+        fila.classList.add("row","my-5","justify-content-center","mt-5","shadow","p-3")
 
         let columna1=document.createElement("div")
         columna1.classList.add("col-12","col-md-5")
 
         let columna2=document.createElement("div")
-        columna2.classList.add("col-12","col-md-3")
+        columna2.classList.add("col-12","col-md-3","border-end","align-self-center")
 
         let columna3=document.createElement("div")
-        columna3.classList.add("col-12","col-md-3")
+        columna3.textContent="subtotal"
+        columna3.classList.add("col-12","col-md-3","align-self-center","fs-1","text-center")
 
         let foto=document.createElement("img")
         foto.classList.add("img-fluid","w-100")
@@ -62,17 +57,17 @@ if(carrito==null){
         cantidad.textContent="cantidad:"+producto.cantidad
 
         let subtotal=document.createElement("h2")
-        subtotal.classList.add("fw-bold")
-        console.log(producto.precio)
-        console.log(producto.cantidad)
-        console.log(producto.precio*producto.cantidad)
-        let banana=producto.precio.split("$")[1]
-        console.log(banana)
+        subtotal.classList.add("fw-bold","text-center","bg-dark","text-white")
+
+        let subtotalcalculado=producto.precio.split("$")[1]*producto.cantidad
+        subtotal.textContent= "$" + subtotalcalculado
+        
 
         columna1.appendChild(foto)
         columna2.appendChild(nombre)
         columna2.appendChild(precio)
         columna2.appendChild(cantidad)
+        columna3.appendChild(subtotal)
         fila.appendChild(columna1)
         fila.appendChild(columna2)
         fila.appendChild(columna3)
